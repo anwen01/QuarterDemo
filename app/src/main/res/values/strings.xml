@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">QuarterDemo</string>
+    <string name="recomment">推荐</string>
+    <string name="talk">段子</string>
+    <string name="video">视频</string>
+
+</resources>

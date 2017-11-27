@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
+    >
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#00f"
+    tools:context="com.zyk.quarterdemo.MainActivity">
+    <com.zyk.quarterdemo.view.MyHeaderView
+        android:id="@+id/myview"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        ></com.zyk.quarterdemo.view.MyHeaderView>
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="8"
+        android:background="#fff"
+        ></FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"/>
+    <RadioGroup
+        android:id="@+id/main_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#fff"
+        >
+        <RadioButton
+            android:drawableTop="@drawable/recommend"
+            style="@style/radioButtonStyle"
+            android:text="@string/recomment"
+            android:textColor="@drawable/recommend"
+            />
+        <RadioButton
+            android:drawableTop="@drawable/talk"
+            android:text="@string/talk"
+            android:textColor="@drawable/talk"
+            style="@style/radioButtonStyle"
+            />
+        <RadioButton
+            android:drawableTop="@drawable/video"
+            android:text="@string/video"
+            android:textColor="@drawable/video"
+            style="@style/radioButtonStyle"
+            />
+    </RadioGroup>
+
+</LinearLayout>
+    </layout>
