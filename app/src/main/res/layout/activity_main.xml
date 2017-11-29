@@ -27,25 +27,28 @@
         android:layout_height="1dp"
         android:background="@color/colorPrimaryDark"/>
     <RadioGroup
-        android:id="@+id/main_rg"
+        android:id="@+id/mainrg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#fff"
         >
         <RadioButton
+            android:id="@+id/main_rb_recommend"
             android:drawableTop="@drawable/recommend"
             style="@style/radioButtonStyle"
             android:text="@string/recomment"
             android:textColor="@drawable/recommend"
             />
         <RadioButton
+            android:id="@+id/main_rb_talk"
             android:drawableTop="@drawable/talk"
             android:text="@string/talk"
             android:textColor="@drawable/talk"
             style="@style/radioButtonStyle"
             />
         <RadioButton
+            android:id="@+id/main_rb_video"
             android:drawableTop="@drawable/video"
             android:text="@string/video"
             android:textColor="@drawable/video"

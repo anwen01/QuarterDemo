@@ -1,13 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tv_ch"
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00f"
+        xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        >
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y320"
+            android:background="@mipmap/drawerlayout_background"
+            android:id="@+id/linearLayout">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/side_header"
+                android:layout_width="@dimen/x110"
+                android:layout_height="@dimen/y100"
+                fresco:roundAsCircle="true"
+                android:layout_marginTop="@dimen/y130"
+                android:layout_marginLeft="@dimen/x50"
+                fresco:placeholderImage="@mipmap/raw_1499936862"
+
+                />
+            <TextView
+                android:id="@+id/tv_left_nicheng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="浓茶与你"
+                android:textColor="#fff"
+                android:layout_marginTop="@dimen/y170"
+                android:layout_marginLeft="@dimen/x200"/>
+
+            <ImageView
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/y100"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/y130"
+                android:layout_marginRight="@dimen/x50"
+                android:src="@mipmap/sex"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:textColor="#fff"
+                android:text="编辑个性签名"/>
+
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="我是侧滑页面"
-        />
-</LinearLayout>
-</layout>
+        android:layout_below="@+id/linearLayout"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout2"
+            android:layout_below="@+id/linearLayout">
+
+            <RelativeLayout
+                android:id="@+id/myfollow"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y70"
+                android:layout_marginBottom="@dimen/y15"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/x60"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/raw_1499933216"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x110"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text="我的关注"/>
+
+                <ImageView
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/raw_1499943790"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/myhide"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y70"
+                android:layout_marginBottom="@dimen/y15"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/x60"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/raw_1499947358"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x110"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text="我的收藏"/>
+
+                <ImageView
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/raw_1499943790"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/searchfriend"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y70"
+                android:layout_marginBottom="@dimen/y15"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/x60"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/raw_1499946865"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x110"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text="搜索好友"/>
+
+                <ImageView
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/raw_1499943790"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mynews"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y70"
+                android:layout_marginBottom="@dimen/y15"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/x60"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/raw_1499947389"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x110"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text="消息通知"/>
+
+                <ImageView
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/raw_1499943790"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:layout_marginBottom="@dimen/y150"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/iv_day_night"
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/y50"
+                android:layout_marginLeft="@dimen/x20"
+                android:src="@mipmap/yueliang1"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/tv_day_night"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/x130"
+                android:layout_centerVertical="true"
+                android:text="夜间模式"/>
+
+            <ImageView
+                android:id="@+id/iv_left_select"
+                android:layout_width="@dimen/y150"
+                android:layout_height="@dimen/y100"
+                android:layout_marginRight="@dimen/x50"
+                android:src="@mipmap/none"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y60"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/y60"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/iv_left_zuopin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:src="@mipmap/raw_1499947056"/>
+
+            <ImageView
+                android:id="@+id/iv_left_shezhi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:src="@mipmap/raw_1499947157"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y60"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/mywork"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="我的作品"/>
+
+            <TextView
+                android:id="@+id/tv_setting"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="设置"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

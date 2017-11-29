@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login1"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y120"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <Button
+            android:id="@+id/log_loginback"
+            android:layout_width="@dimen/x42"
+            android:layout_height="@dimen/y42"
+            android:background="@mipmap/iv_back"
+            android:layout_marginLeft="@dimen/y60"
+            />
+        <TextView
+            android:id="@+id/log_zhuce"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y60"
+            android:text="注册账号"
+            android:textColor="#fff"
+            android:textSize="@dimen/x45"
+            android:gravity="right|center"
+            android:layout_marginRight="@dimen/y60"
+            />
+    </LinearLayout>
+    <ImageView
+        android:layout_width="@dimen/x240"
+        android:layout_height="@dimen/y240"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x60"
+        android:src="@mipmap/logo"
+        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:layout_marginTop="@dimen/y80"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y80"
+                android:text="账号"
+                android:textColor="#fff"
+                android:textSize="@dimen/x50" />
+
+            <EditText
+                android:id="@+id/log_ednum"
+                android:layout_width="@dimen/x500"
+                android:layout_height="@dimen/y80"
+                android:textColor="#fff"
+                android:textSize="@dimen/x35" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/y80"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y80"
+                android:text="密码"
+                android:textColor="#fff"
+                android:textSize="@dimen/x50"
+                />
+            <EditText
+                android:id="@+id/log_psw"
+                android:layout_width="@dimen/x500"
+                android:layout_height="@dimen/y80"
+                android:textColor="#fff"
+                android:textSize="@dimen/x35"
+                />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/log_login"
+        android:layout_width="@dimen/x550"
+        android:layout_height="@dimen/y90"
+        android:text="登录"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/x50"
+        android:background="@drawable/orangeyuan"
+        />
+    <TextView
+        android:id="@+id/log_wpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="忘记密码"
+        android:textSize="@dimen/x40"
+        android:textColor="#fff"
+        android:layout_gravity="right|center_horizontal"
+        android:layout_marginRight="@dimen/x100"
+        android:layout_marginTop="@dimen/x15"
+        />
+    <TextView
+        android:id="@+id/log_youlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="游客登录"
+        android:textSize="@dimen/x60"
+        android:textColor="#fff"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+</LinearLayout>

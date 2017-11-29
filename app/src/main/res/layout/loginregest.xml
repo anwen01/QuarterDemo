@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/raw_1499917357"
+    >
+    <Button
+        android:id="@+id/log_loginback"
+        android:layout_width="@dimen/x42"
+        android:layout_height="@dimen/y42"
+        android:background="@mipmap/iv_back"
+        android:layout_marginTop="@dimen/x60"
+        android:layout_marginLeft="@dimen/x60"
+        />
+    <ImageView
+        android:layout_width="@dimen/x240"
+        android:layout_height="@dimen/y240"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x60"
+        android:src="@mipmap/logo"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        />
+    <ImageView
+        android:id="@+id/log_weixin"
+        android:layout_width="@dimen/x360"
+        android:layout_height="@dimen/y60"
+        android:background="@drawable/tuoyuan_wx"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/weixin"
+        />
+    <ImageView
+        android:id="@+id/log_qq"
+        android:layout_width="@dimen/x360"
+        android:layout_height="@dimen/y60"
+        android:background="@drawable/tuoyuan_qq"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/qq"
+        android:layout_marginTop="@dimen/x20"
+        />
+    <TextView
+        android:id="@+id/log_qt"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/x60"
+        android:text="其他登录方式"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/x40"
+        android:textColor="#fff"
+        android:layout_marginTop="@dimen/x30"
+        android:layout_marginBottom="@dimen/x60"
+        />
+
+
+</LinearLayout>
