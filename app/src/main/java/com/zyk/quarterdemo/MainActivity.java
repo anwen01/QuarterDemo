@@ -1,5 +1,9 @@
 package com.zyk.quarterdemo;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +21,7 @@ import com.zyk.quarterdemo.fragments.TalkFragment;
 import com.zyk.quarterdemo.fragments.VideoFragment;
 import com.zyk.quarterdemo.view.MyHeaderView;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,8 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            //透明导航栏
 //            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 //        }
-
-
         inits();
         mainRbRecommend.setOnClickListener(this);
         mainRbTalk.setOnClickListener(this);
@@ -66,11 +69,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
         slidingMenu.setMenu(R.layout.sidefragment);
 
+        SharedPreferences sharedPreferences=getSharedPreferences("config", Context.MODE_PRIVATE);
+        String icon = sharedPreferences.getString("icon","");
+        if (icon != null) {
+            myview.getIvHeader().setImageURI(Uri.parse(icon));
+        } else {
+            myview.getIvHeader().setImageResource(R.mipmap.raw_header);
+        }
+        //头像
         myview.getIvHeader(new MyHeaderView.OnHeaderClickListener() {
             @Override
             public void setOnHeaderClickListener() {
 
                 slidingMenu.toggle();
+            }
+        });
+        //编写
+        myview.getIvWrite(new MyHeaderView.OnWriteClickListener() {
+            @Override
+            public void setOnHeaderClickListener() {
+                Intent intent = new Intent(MainActivity.this, WriteActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -144,5 +163,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         fragmentTransaction.commit();
     }
+
+
+
 
 }

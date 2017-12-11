@@ -3,7 +3,9 @@
 <LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fff"
+    >
     <android.support.design.widget.TabLayout
         android:id="@+id/recomment_tab"
         android:layout_width="match_parent"
@@ -17,6 +19,5 @@
         android:id="@+id/recomment_vp"
         style="@style/oftenStyle"
         />
-
 </LinearLayout>
     </layout>

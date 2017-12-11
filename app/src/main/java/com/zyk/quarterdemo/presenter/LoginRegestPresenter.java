@@ -2,6 +2,7 @@ package com.zyk.quarterdemo.presenter;
 
 import android.util.Log;
 
+import com.zyk.quarterdemo.base.BasePresenter;
 import com.zyk.quarterdemo.beans.LoginBean;
 import com.zyk.quarterdemo.beans.TalkBean;
 import com.zyk.quarterdemo.model.LoginRegesterModel;
@@ -14,13 +15,14 @@ import com.zyk.quarterdemo.view.ITalkView;
  * 时间：2017/11/28
  */
 
-public class LoginRegestPresenter {
+public class LoginRegestPresenter extends BasePresenter<ILoginRegesterView> {
     private ILoginRegesterView iLoginRegesterView;
     private LoginRegesterModel loginRegesterModel;
 
     public LoginRegestPresenter(ILoginRegesterView iLoginRegesterView) {
         this.iLoginRegesterView = iLoginRegesterView;
         this.loginRegesterModel=new LoginRegesterModel();
+        attachView(iLoginRegesterView);
     }
     public void getData(String mobile, String password){
         loginRegesterModel.getData(mobile, password, new LoginRegesterModel.LoginRegesterlListener() {

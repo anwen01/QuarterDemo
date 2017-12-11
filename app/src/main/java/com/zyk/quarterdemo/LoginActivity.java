@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
+import com.zyk.quarterdemo.base.BaseActivity;
+import com.zyk.quarterdemo.base.BasePresenter;
 import com.zyk.quarterdemo.beans.LoginBean;
 import com.zyk.quarterdemo.presenter.LoginRegestPresenter;
 import com.zyk.quarterdemo.view.ILoginRegesterView;
@@ -27,7 +29,7 @@ import butterknife.OnClick;
  * 时间：2017/11/28
  */
 
-public class LoginActivity extends AppCompatActivity implements ILoginRegesterView {
+public class LoginActivity extends BaseActivity<ILoginRegesterView,LoginRegestPresenter> implements ILoginRegesterView {
     @BindView(R.id.log_loginback)
     Button logLoginback;
     @BindView(R.id.log_zhuce)
@@ -44,14 +46,16 @@ public class LoginActivity extends AppCompatActivity implements ILoginRegesterVi
     TextView logYoulogin;
     private LoginRegestPresenter loginRegestPresenter;
 
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_item);
-        ButterKnife.bind(this);
+    public int setView() {
+        return R.layout.login_item;
+    }
+
+    @Override
+    public LoginRegestPresenter createPresenter() {
         loginRegestPresenter = new LoginRegestPresenter(this);
-
-
+        return loginRegestPresenter;
     }
 
     @Override
@@ -60,6 +64,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginRegesterVi
         if (bean.getMsg().equals("登录成功")){
             SharedPreferences sharedPreferences=getSharedPreferences("config", Context.MODE_PRIVATE);
             sharedPreferences.edit().putString("token",bean.getData().getToken()).commit();
+            System.out.println("======token:"+sharedPreferences.getString("token",""));
+            System.out.println("======uid:"+bean.getData().getUid());
+            sharedPreferences.edit().putString("uid",bean.getData().getUid()+"").commit();
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
@@ -91,6 +98,13 @@ public class LoginActivity extends AppCompatActivity implements ILoginRegesterVi
                 break;
         }
 
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (loginRegestPresenter.isAttachView()){
+            loginRegestPresenter.detach();
+        }
     }
 }

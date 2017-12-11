@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    >
+    <RelativeLayout
+        android:id="@+id/duan_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:background="#00f">
+        <TextView
+            android:id="@+id/user_tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            android:layout_marginLeft="@dimen/x30"
+            android:textColor="#fff"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="账号管理"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#fff"/>
+        <TextView
+            android:id="@+id/user_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保存"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            android:layout_marginRight="@dimen/x30"
+            android:textColor="#fff"/>
+    </RelativeLayout>
+    <TextView
+        android:background="#F4F4F8"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x20"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="@dimen/y320"
+        android:layout_height="@dimen/x100">
+        <TextView
+            android:paddingLeft="@dimen/x20"
+            android:text="头像:"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/x30"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/userinfo_img"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/raw_header"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/y120" />
+    </LinearLayout>
+    <TextView
+        android:background="#F4F4F8"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="@dimen/y320"
+        android:layout_height="@dimen/x50">
+        <TextView
+            android:paddingLeft="@dimen/x20"
+            android:text="用户名:"
+            android:textSize="@dimen/x30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/user_name"
+            android:gravity="end"
+            android:layout_marginLeft="5dp"
+            android:textSize="@dimen/x30"
+            android:text="123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="@dimen/y320"
+        android:layout_height="@dimen/x50">
+        <TextView
+            android:paddingLeft="@dimen/x20"
+            android:text="昵称:"
+            android:textSize="@dimen/x30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/user_msg"
+            android:gravity="end"
+            android:layout_marginLeft="5dp"
+            android:textSize="@dimen/x30"
+            android:text="123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

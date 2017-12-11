@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zyk.quarterdemo.base.BaseActivity;
 import com.zyk.quarterdemo.beans.RegesterBean;
 import com.zyk.quarterdemo.presenter.RegestPresenter;
 import com.zyk.quarterdemo.view.IRegesterView;
@@ -24,7 +25,7 @@ import butterknife.OnClick;
  * 时间：2017/11/28
  */
 
-public class RegesterActivity extends AppCompatActivity implements IRegesterView{
+public class RegesterActivity extends BaseActivity<IRegesterView,RegestPresenter> implements IRegesterView{
     @BindView(R.id.regest_back)
     ImageView regestBack;
     @BindView(R.id.regest_log)
@@ -40,11 +41,14 @@ public class RegesterActivity extends AppCompatActivity implements IRegesterView
     private RegestPresenter regestPresenter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.regest);
-        ButterKnife.bind(this);
+    public int setView() {
+        return R.layout.regest;
+    }
+
+    @Override
+    public RegestPresenter createPresenter() {
         regestPresenter = new RegestPresenter(this);
+        return regestPresenter;
     }
 
     @OnClick({R.id.regest_back, R.id.regest_log, R.id.regest_regest, R.id.regest_yklog})
@@ -77,5 +81,13 @@ public class RegesterActivity extends AppCompatActivity implements IRegesterView
     @Override
     public void regesterBackFailure(String code) {
         Toast.makeText(this, code, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (regestPresenter.isAttachView()){
+            regestPresenter.detach();
+        }
     }
 }

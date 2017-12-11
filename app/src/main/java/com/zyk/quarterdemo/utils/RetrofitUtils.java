@@ -1,8 +1,10 @@
 package com.zyk.quarterdemo.utils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
@@ -48,9 +50,14 @@ public class RetrofitUtils {
             calladapterFactories.add(factory);
             return this;
         }
-
+        File file=new File(MyApplication.context.getCacheDir(),"huancun");
         public RetrofitUtils build() {
+            int cachesize=10*1024*1024;
+            Cache cache=new Cache(file,cachesize);
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    //缓存拦截器
+                    .addNetworkInterceptor(new CacheInterceptor())
+                    .cache(cache)
                     //拦截器
                     .addInterceptor(new MyInterceptor())
                     .build();

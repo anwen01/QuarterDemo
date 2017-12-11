@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.zyk.quarterdemo.R;
 
 /**
@@ -18,7 +19,7 @@ import com.zyk.quarterdemo.R;
 
 public class MyHeaderView extends LinearLayout {
     private TextView tvContent;
-    private ImageView ivHeader;
+    private SimpleDraweeView ivHeader;
     private ImageView ivWrite;
 
     public MyHeaderView(Context context) {
@@ -38,6 +39,13 @@ public class MyHeaderView extends LinearLayout {
                 headerClickListener.setOnHeaderClickListener();
             }
         });
+        //编写的点击事件
+        ivWrite.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                writeClickListener.setOnHeaderClickListener();
+            }
+        });
 
     }
 
@@ -45,18 +53,30 @@ public class MyHeaderView extends LinearLayout {
         return tvContent;
     }
 
-
+    public SimpleDraweeView getIvHeader() {
+        return ivHeader;
+    }
 
     public MyHeaderView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
+    //头像
     public OnHeaderClickListener headerClickListener;
     public interface OnHeaderClickListener{
         void setOnHeaderClickListener();
     }
     public void getIvHeader(OnHeaderClickListener headerClickListener) {
        this.headerClickListener=headerClickListener;
+    }
+
+    //编写
+    public OnWriteClickListener writeClickListener;
+    public interface OnWriteClickListener{
+        void setOnHeaderClickListener();
+    }
+    public void getIvWrite(OnWriteClickListener writeClickListener) {
+        this.writeClickListener=writeClickListener;
     }
 
 }

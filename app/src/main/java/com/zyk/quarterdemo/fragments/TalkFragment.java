@@ -1,64 +1,108 @@
 package com.zyk.quarterdemo.fragments;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.zyk.quarterdemo.R;
 import com.zyk.quarterdemo.adpters.TakeAdapter;
+import com.zyk.quarterdemo.base.BaseFragment;
 import com.zyk.quarterdemo.beans.TalkBean;
 import com.zyk.quarterdemo.presenter.TalkPresenter;
+import com.zyk.quarterdemo.utils.DividerItemDecoration;
 import com.zyk.quarterdemo.view.ITalkView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * 作者：张玉轲
  * 时间：2017/11/7
  */
 
-public class TalkFragment extends Fragment implements ITalkView{
+public class TalkFragment extends BaseFragment<ITalkView,TalkPresenter> implements ITalkView{
     @BindView(R.id.recycler)
-    RecyclerView recycler;
-    Unbinder unbinder;
+    XRecyclerView recycler;
+    private TalkPresenter talkPresenter;
+    private int page=1;
+    private TakeAdapter takeAdapter;
+    private List<TalkBean.DataBean> bigList;
+    private String token;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.talk_fragment, null);
-        unbinder = ButterKnife.bind(this, view);
-
-        return view;
+    protected int setLayout() {
+        return R.layout.talk_fragment;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        TalkPresenter talkPresenter = new TalkPresenter(this);
-        talkPresenter.getData("3");
+    protected void createpresenter() {
+        //引用Presenter层
+        talkPresenter = new TalkPresenter(this);
+
+
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+    protected void processLogic() {
+        bigList = new ArrayList<>();
+        //逻辑代码
+        talkPresenter.getData(page +"");
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recycler.setLayoutManager(layoutManager);
     }
 
+
     @Override
-    public void talkBackSuccess(TalkBean bean) {
-        recycler.setAdapter(new TakeAdapter(getActivity(),bean));
+    public void talkBackSuccess(final TalkBean bean) {
+        if (bean.getData()!=null) {
+            if (takeAdapter == null) {
+                bigList.addAll(bean.getData());
+                takeAdapter = new TakeAdapter(getActivity(), bigList);
+                recycler.setAdapter(takeAdapter);
+            } else {
+                takeAdapter.notifyDataSetChanged();
+            }
+        }
+        recycler.setPullRefreshEnabled(true);
+        recycler.setLoadingMoreEnabled(true);
+        recycler.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                bigList.clear();
+                talkPresenter.getData("1");
+                takeAdapter.isno(true,bean.getData());
+                recycler.refreshComplete();
+            }
+
+            @Override
+            public void onLoadMore() {
+
+                talkPresenter.getData(page++ +"");
+                takeAdapter.isno(false,bean.getData());
+                recycler.loadMoreComplete();
+            }
+        });
+
+        //万能下划线
+        recycler.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL, Color.BLACK,1));
+
     }
 
     @Override
     public void talkBackFailure(String code) {
+        System.out.println(code);
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (talkPresenter.isAttachView()){
+            talkPresenter.detach();
+        }
     }
 }

@@ -7,10 +7,12 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.FormBody;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.Request;
 import okhttp3.Response;
 
@@ -62,7 +64,22 @@ public class MyInterceptor implements Interceptor {
 
                 //获取新的request   取代原先的request
                 request=request.newBuilder().post(body).build();
+            }else if(request.body() instanceof MultipartBody){
+                MultipartBody body = (MultipartBody) request.body();
+                MultipartBody.Builder multipartBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+                //添加制定的公共参数到新的body里  把原先的body替换掉
+                multipartBuilder.addFormDataPart("source","android")
+                        .addFormDataPart("appVersion",versionCode+"")
+                        .addFormDataPart("token",token)
+                        .build();
+                List<MultipartBody.Part> parts=body.parts();
+                for (MultipartBody.Part part:parts){
+                    multipartBuilder.addPart(part);
+                }
+                request=request.newBuilder().post(multipartBuilder.build()).build();
             }
+        }else {
+            request = request.newBuilder().url(request.url()+"&source=android&appVersion="+versionCode).build();
         }
         //进行返回
         Response proceed = chain.proceed(request);

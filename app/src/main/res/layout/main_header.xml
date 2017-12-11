@@ -4,13 +4,17 @@
     android:layout_height="60dp"
     android:background="#00f"
     android:gravity="center_vertical"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     >
-    <ImageView
+
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/iv_header"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@mipmap/raw_1499936862"
-        android:layout_marginLeft="25dp"
+        android:layout_width="@dimen/x90"
+        android:layout_height="@dimen/y90"
+        fresco:roundAsCircle="true"
+        fresco:placeholderImage="@mipmap/raw_header"
+        android:layout_marginLeft="@dimen/x60"
+
         />
     <TextView
         android:layout_weight="1"

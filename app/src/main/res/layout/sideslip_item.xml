@@ -21,14 +21,14 @@
                 fresco:roundAsCircle="true"
                 android:layout_marginTop="@dimen/y130"
                 android:layout_marginLeft="@dimen/x50"
-                fresco:placeholderImage="@mipmap/raw_1499936862"
+                fresco:placeholderImage="@mipmap/raw_header"
 
                 />
             <TextView
                 android:id="@+id/tv_left_nicheng"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="浓茶与你"
+                android:text="昵称"
                 android:textColor="#fff"
                 android:layout_marginTop="@dimen/y170"
                 android:layout_marginLeft="@dimen/x200"/>

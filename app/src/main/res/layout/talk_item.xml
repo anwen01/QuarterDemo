@@ -1,43 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical" android:layout_width="match_parent"
-android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="20dp">
-        <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
             android:id="@+id/my_image_view"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            fresco:roundAsCircle="true"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
             />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="@dimen/x12"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/duanzi_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#f00"
-                android:textSize="20dp"/>
+                android:textSize="@dimen/x20" />
+
             <TextView
                 android:id="@+id/duanzi_user_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"/>
+                android:textSize="@dimen/x20" />
         </LinearLayout>
+     <RelativeLayout
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:gravity="center|right"
+         >
+         <com.zyk.quarterdemo.view.ZhuantuView
+             android:id="@+id/talk_zhuan_item"
+             android:layout_width="40dp"
+             android:layout_height="40dp"
+             android:layout_alignParentRight="true"
+             android:visibility="gone"
+             fresco:imageResoce="@mipmap/shiled1"
+             fresco:text="324" />
+
+         <com.zyk.quarterdemo.view.ZhuantuView
+             android:id="@+id/talk_zhuan_item2"
+             android:layout_width="40dp"
+             android:layout_height="40dp"
+             android:layout_alignParentRight="true"
+             android:visibility="gone"
+             fresco:imageResoce="@mipmap/copylink1"
+             fresco:text="687" />
+
+         <com.zyk.quarterdemo.view.ZhuantuView
+             android:id="@+id/talk_zhuan_item3"
+             android:layout_width="40dp"
+             android:layout_height="40dp"
+             android:layout_alignParentRight="true"
+             android:visibility="gone"
+             fresco:imageResoce="@mipmap/report1"
+             fresco:text="1980" />
+
+         <com.zyk.quarterdemo.view.ZhuanMainView
+             android:id="@+id/zhuan_main"
+             android:layout_width="40dp"
+             android:layout_height="40dp"
+             android:layout_centerHorizontal="true"
+             android:layout_alignParentRight="true"/>
+     </RelativeLayout>
+
     </LinearLayout>
+
     <TextView
         android:id="@+id/duanzi_user_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="@dimen/x20"
+        android:layout_marginLeft="@dimen/x20"
+        android:textSize="@dimen/x35" />
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="3"
+        android:id="@+id/talk_gv"
+        android:layout_gravity="center"
+        ></GridView>
 </LinearLayout>

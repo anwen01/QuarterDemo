@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.zyk.quarterdemo.R;
+import com.zyk.quarterdemo.adpters.MyViewPageFragAdapter;
 import com.zyk.quarterdemo.databinding.RecommendFragmentBinding;
+import com.zyk.quarterdemo.utils.TabLengthUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -61,7 +63,7 @@ public class RecommendFragment extends Fragment {
         recommentTab.post(new Runnable() {
             @Override
             public void run() {
-                setIndicator(recommentTab, 60, 60);
+                TabLengthUtils.setIndicator(recommentTab, 60, 60);
             }
         });
 
@@ -71,62 +73,9 @@ public class RecommendFragment extends Fragment {
 
     private void initVP() {
         //适配器
-        recommentVp.setAdapter(new MyViewPageFragAdapter(getFragmentManager()));
+        recommentVp.setAdapter(new MyViewPageFragAdapter(getFragmentManager(),titlearr,list));
     }
 
-    class MyViewPageFragAdapter extends FragmentPagerAdapter {
-
-        public MyViewPageFragAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return list.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return list.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return titlearr[position];
-        }
-    }
-
-    //TabLayout下划线长短的方法
-    public void setIndicator(TabLayout tabs, int leftDip, int rightDip) {
-        Class<?> tabLayout = tabs.getClass();
-        Field tabStrip = null;
-        try {
-            tabStrip = tabLayout.getDeclaredField("mTabStrip");
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-
-        tabStrip.setAccessible(true);
-        LinearLayout llTab = null;
-        try {
-            llTab = (LinearLayout) tabStrip.get(tabs);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        int left = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, leftDip, Resources.getSystem().getDisplayMetrics());
-        int right = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, rightDip, Resources.getSystem().getDisplayMetrics());
-
-        for (int i = 0; i < llTab.getChildCount(); i++) {
-            View child = llTab.getChildAt(i);
-            child.setPadding(0, 0, 0, 0);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
-            params.leftMargin = left;
-            params.rightMargin = right;
-            child.setLayoutParams(params);
-            child.invalidate();
-        }
 
 
-    }
 }

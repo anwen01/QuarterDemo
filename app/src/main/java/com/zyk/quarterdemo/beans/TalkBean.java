@@ -58,11 +58,28 @@ public class TalkBean {
         private Object commentNum;
         private String content;
         private String createTime;
+        private String imgUrls;
         private int jid;
         private Object praiseNum;
         private Object shareNum;
         private int uid;
         private UserBean user;
+        private boolean flag;
+        public boolean isFlag() {
+            return flag;
+        }
+
+        public void setFlag(boolean flag) {
+            this.flag = flag;
+        }
+
+        public String getImgUrls() {
+            return imgUrls;
+        }
+
+        public void setImgUrls(String imgUrls) {
+            this.imgUrls = imgUrls;
+        }
 
         public Object getCommentNum() {
             return commentNum;

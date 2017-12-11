@@ -22,13 +22,13 @@ import com.zyk.quarterdemo.utils.RetrofitUtils;
 
 public class TalkModel {
 
-    public void getData(String page, final TalkModelListener listener){
+    public void getData(String page,final TalkModelListener listener){
         Map<String,String> map=new HashMap<>();
         map.put("page",page);
         Observable<TalkBean> data = new RetrofitUtils.Builder()
                 .addConverterFactorys(GsonConverterFactory.create())
                 .addCallAdapterFactorys(RxJava2CallAdapterFactory.create())
-                .build().service().getData(map);
+                .build().service().getData1(map);
         data.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<TalkBean>() {
